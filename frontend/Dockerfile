@@ -17,7 +17,6 @@ COPY . .
 
 # Diagnóstico opcional (puedes comentar estas 2 líneas luego)
 RUN node -v && npm -v && ng version
-
 # Compila usando el CLI (global) y fuerza salida a /app/dist
 RUN ng build --configuration production --output-path=dist
 
