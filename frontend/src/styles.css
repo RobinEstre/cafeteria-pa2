@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+body {
+    background: #f6f7fb;
+    font-family: Inter, Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.snack-error {
+    background: #d32f2f;
+    color: #fff;
+}
+
+.mat-toolbar .spacer {
+    flex: 1 1 auto
+}

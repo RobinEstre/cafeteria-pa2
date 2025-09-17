@@ -1,0 +1,54 @@
+<mat-toolbar color="primary">
+  <span>Productos</span>
+  <span class="spacer"></span>
+  <button mat-raised-button color="accent" (click)="crear()">
+    <mat-icon>add</mat-icon> Nuevo
+  </button>
+</mat-toolbar>
+
+<div class="wrap">
+  <div class="table-card" *ngIf="!loading; else loadingTpl">
+    <table mat-table [dataSource]="data" class="mat-elevation-z2">
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>#</th>
+        <td mat-cell *matCellDef="let r">{{r.id}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Nombre</th>
+        <td mat-cell *matCellDef="let r">{{r.name}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef>Precio</th>
+        <td mat-cell *matCellDef="let r">{{r.price | currency:'PEN'}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="stock">
+        <th mat-header-cell *matHeaderCellDef>Stock</th>
+        <td mat-cell *matCellDef="let r">{{r.stock}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let r" class="ta-right">
+          <button mat-icon-button (click)="editar(r)"><mat-icon>edit</mat-icon></button>
+          <button mat-icon-button color="warn" (click)="eliminar(r.id!)"><mat-icon>delete</mat-icon></button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayed"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayed"></tr>
+    </table>
+
+    <mat-paginator [pageSize]="8"></mat-paginator>
+  </div>
+
+  <ng-template #loadingTpl>
+    <div class="loading">
+      <mat-spinner diameter="40"></mat-spinner>
+      <p>Cargando...</p>
+    </div>
+  </ng-template>
+</div>

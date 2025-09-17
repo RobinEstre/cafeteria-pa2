@@ -1,0 +1,23 @@
+<div style="max-width:380px;margin:64px auto;">
+    <mat-card>
+        <mat-toolbar color="primary">Ingresar</mat-toolbar>
+        <form [formGroup]="form" (ngSubmit)="submit()" style="padding:16px;">
+            <mat-form-field appearance="outline" class="w-full">
+                <mat-label>Usuario</mat-label>
+                <input matInput formControlName="username" />
+                <mat-error *ngIf="form.controls.username.invalid">Requerido</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="w-full">
+                <mat-label>Contraseña</mat-label>
+                <input matInput type="password" formControlName="password" />
+                <mat-error *ngIf="form.controls.password.invalid">Mínimo 3 caracteres</mat-error>
+            </mat-form-field>
+
+            <button mat-raised-button color="primary" [disabled]="form.invalid || loading">
+                <mat-spinner *ngIf="loading" diameter="18"></mat-spinner>
+                <span *ngIf="!loading">Entrar</span>
+            </button>
+        </form>
+    </mat-card>
+</div>
